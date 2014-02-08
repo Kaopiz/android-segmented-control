@@ -36,16 +36,13 @@ public class SampleActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_sample, container, false);
 
             SegmentedRadioGroup segmented2 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented2);
-            segmented2.setTintColor(Color.parseColor("#FFF3EEFF"));
+            segmented2.setTintColor(Color.DKGRAY);
 
             SegmentedRadioGroup segmented3 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented3);
-            segmented3.setTintColor(Color.RED);
+            segmented3.setTintColor(Color.parseColor("#FFF3EEFF"));
 
             SegmentedRadioGroup segmented4 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented4);
-            segmented4.setTintColor(Color.BLUE);
-
-            SegmentedRadioGroup segmented1 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented1);
-            segmented1.setTintColor(Color.CYAN);
+            segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
 
             return rootView;
         }
