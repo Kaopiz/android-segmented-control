@@ -30,7 +30,7 @@ public class SegmentedRadioGroup extends RadioGroup {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-//        changeButtonsImages(0);
+        changeButtonsImages(0);
     }
 
     public void setTintColor(int tintColor) {
@@ -38,11 +38,9 @@ public class SegmentedRadioGroup extends RadioGroup {
     }
 
     private void changeButtonsImages(int tintColor) {
-
         int count = super.getChildCount();
         LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         params.setMargins(0, 0, -oneDP, 0);
-
         if (count > 1) {
             super.getChildAt(0).setLayoutParams(params);
             updateBackground(getChildAt(0), R.drawable.radio_checked_left, R.drawable.radio_unchecked_left, tintColor);
@@ -67,8 +65,8 @@ public class SegmentedRadioGroup extends RadioGroup {
         ((Button) view).setTextColor(colorStateList);
 
         //Set set background
-        Drawable checkedDrawable = getResources().getDrawable(checked);
-        Drawable uncheckedDrawable = getResources().getDrawable(unchecked);
+        Drawable checkedDrawable = getResources().getDrawable(checked).mutate();
+        Drawable uncheckedDrawable = getResources().getDrawable(unchecked).mutate();
         ((GradientDrawable) checkedDrawable).setColor((tintColor != 0) ? tintColor : getResources().getColor(R.color.radio_button_selected_color));
         ((GradientDrawable) uncheckedDrawable).setStroke(oneDP, (tintColor != 0) ? tintColor : getResources().getColor(R.color.radio_button_selected_color));
         StateListDrawable stateListDrawable = new StateListDrawable();
