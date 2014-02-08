@@ -5,8 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="LectureRadioButton">
-        <item name="android:textColor">@drawable/lecture_action_item_color</item>
+    <style name="RadioButton">
+        <item name="android:textColor">@drawable/button_text_color</item>
         <item name="android:minHeight">33dp</item>
         <item name="android:minWidth">70dp</item>
         <item name="android:gravity">center</item>

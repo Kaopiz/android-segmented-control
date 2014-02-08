@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="One"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
 
         </info.hoang8f.android.segmented.SegmentedRadioGroup>
     </RelativeLayout>
@@ -48,14 +48,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="One"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Two"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
         </info.hoang8f.android.segmented.SegmentedRadioGroup>
 
     </RelativeLayout>
@@ -79,21 +79,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="One"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Two"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button33"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Three"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
         </info.hoang8f.android.segmented.SegmentedRadioGroup>
 
     </RelativeLayout>
@@ -117,28 +117,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Asia"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Africa"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Europe"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button44"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="North America"
-                style="@style/LectureRadioButton" />
+                style="@style/RadioButton" />
         </info.hoang8f.android.segmented.SegmentedRadioGroup>
 
     </RelativeLayout>
