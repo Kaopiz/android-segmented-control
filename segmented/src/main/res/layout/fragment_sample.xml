@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="80dp"
-        android:background="#ff71a39f"
+        android:background="#FF7B07B2"
         android:gravity="center">
 
         <info.hoang8f.android.segmented.SegmentedRadioGroup

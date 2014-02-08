@@ -39,7 +39,7 @@ public class SampleActivity extends ActionBarActivity {
             segmented2.setTintColor(Color.DKGRAY);
 
             SegmentedRadioGroup segmented3 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented3);
-            segmented3.setTintColor(Color.parseColor("#FFF3EEFF"));
+            segmented3.setTintColor(Color.parseColor("#FFD0FF3C"));
 
             SegmentedRadioGroup segmented4 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented4);
             segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
