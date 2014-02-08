@@ -1,11 +1,10 @@
 package info.hoang8f.android.segmented;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,26 +22,6 @@ public class SampleActivity extends ActionBarActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.sample, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -55,6 +34,19 @@ public class SampleActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_sample, container, false);
+
+            SegmentedRadioGroup segmented2 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented2);
+            segmented2.setTintColor(Color.parseColor("#FFF3EEFF"));
+
+            SegmentedRadioGroup segmented3 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented3);
+            segmented3.setTintColor(Color.RED);
+
+            SegmentedRadioGroup segmented4 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented4);
+            segmented4.setTintColor(Color.BLUE);
+
+            SegmentedRadioGroup segmented1 = (SegmentedRadioGroup) rootView.findViewById(R.id.segmented1);
+            segmented1.setTintColor(Color.CYAN);
+
             return rootView;
         }
     }

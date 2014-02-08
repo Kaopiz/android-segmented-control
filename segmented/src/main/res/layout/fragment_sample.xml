@@ -13,6 +13,7 @@
         android:gravity="center">
 
         <info.hoang8f.android.segmented.SegmentedRadioGroup
+            android:id="@+id/segmented1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -36,20 +37,21 @@
         android:gravity="center">
 
         <info.hoang8f.android.segmented.SegmentedRadioGroup
+            android:id="@+id/segmented2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/button1"
+                android:id="@+id/button21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="One"
                 style="@style/LectureRadioButton" />
 
             <RadioButton
-                android:id="@+id/button2"
+                android:id="@+id/button22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Two"
@@ -66,27 +68,28 @@
         android:gravity="center">
 
         <info.hoang8f.android.segmented.SegmentedRadioGroup
+            android:id="@+id/segmented3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/button1"
+                android:id="@+id/button31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="One"
                 style="@style/LectureRadioButton" />
 
             <RadioButton
-                android:id="@+id/button2"
+                android:id="@+id/button32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Two"
                 style="@style/LectureRadioButton" />
 
             <RadioButton
-                android:id="@+id/button3"
+                android:id="@+id/button33"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Three"
@@ -103,34 +106,35 @@
         android:gravity="center">
 
         <info.hoang8f.android.segmented.SegmentedRadioGroup
+            android:id="@+id/segmented4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/button1"
+                android:id="@+id/button41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Asia"
                 style="@style/LectureRadioButton" />
 
             <RadioButton
-                android:id="@+id/button2"
+                android:id="@+id/button42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Africa"
                 style="@style/LectureRadioButton" />
 
             <RadioButton
-                android:id="@+id/button3"
+                android:id="@+id/button43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Europe"
                 style="@style/LectureRadioButton" />
 
             <RadioButton
-                android:id="@+id/button4"
+                android:id="@+id/button44"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="North America"
