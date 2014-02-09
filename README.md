@@ -3,13 +3,13 @@ android-segmented-control
 
 iOS 7 segmented control for android
 
-This is my implement of iOS 7 segmented control, based on RadioGroup and RadioButton widget on Android.
+Custom View of iOS 7 segmented control for Android. My implementation is based on RadioGroup and RadioButton widget.
  
 ![Sample Image](https://raw2.github.com/hoang8f/android-segmented-control/master/screenshot/screenshot.png)
 
 Usage
 -----
-Copy(or merge) below files into coresponding file/folder:
+Copy(or merge) below files into corresponding file/folder:
   + SegmentedGroup.java
   + res/drawable/*
   + res/drawable-v14/*
