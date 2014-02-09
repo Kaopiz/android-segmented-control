@@ -14,19 +14,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 
-public class SegmentedRadioGroup extends RadioGroup {
+public class SegmentedGroup extends RadioGroup {
 
     private int oneDP;
     private Resources res;
 
-    public SegmentedRadioGroup(Context context) {
+    public SegmentedGroup(Context context) {
         super(context);
         res = getResources();
         oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, res.getDisplayMetrics());
 
     }
 
-    public SegmentedRadioGroup(Context context, AttributeSet attrs) {
+    public SegmentedGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         res = getResources();
         oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, res.getDisplayMetrics());
