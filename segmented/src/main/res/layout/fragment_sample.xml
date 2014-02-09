@@ -137,7 +137,7 @@
                 android:id="@+id/button44"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="North America"
+                android:text="America"
                 style="@style/RadioButton" />
         </info.hoang8f.android.segmented.SegmentedGroup>
 
