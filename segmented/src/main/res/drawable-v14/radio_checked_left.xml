@@ -7,6 +7,6 @@
     <corners
         android:bottomRightRadius="0.1dp"
         android:bottomLeftRadius="@dimen/radio_button_conner_radius"
-        android:topLeftRadius="0.1dp"
-        android:topRightRadius="@dimen/radio_button_conner_radius" />
+        android:topLeftRadius="@dimen/radio_button_conner_radius"
+        android:topRightRadius="0.1dp" />
 </shape>
