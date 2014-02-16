@@ -1,7 +1,7 @@
 android-segmented-control
 =========================
 
-iOS 7 segmented control for android
+iOS 7 style segmented control for android
 
 Custom View of iOS 7 segmented control for Android. My implementation is based on RadioGroup and RadioButton widget.
  
