@@ -76,3 +76,7 @@ License
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hoang8f/android-segmented-control/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
