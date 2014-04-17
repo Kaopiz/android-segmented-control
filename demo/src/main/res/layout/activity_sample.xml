@@ -3,5 +3,5 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="info.hoang8f.android.segmented.SampleActivity"
+    tools:context="info.hoang8f.mymo.segmented.demo.SampleActivity"
     tools:ignore="MergeRootFrame" />

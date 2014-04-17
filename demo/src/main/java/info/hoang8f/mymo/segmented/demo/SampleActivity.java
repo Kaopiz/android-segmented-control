@@ -1,4 +1,4 @@
-package info.hoang8f.android.segmented;
+package info.hoang8f.mymo.segmented.demo;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class SampleActivity extends ActionBarActivity {
 
