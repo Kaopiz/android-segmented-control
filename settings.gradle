@@ -1,1 +1,1 @@
-include ':segmented'
+include ':demo', ':library'
