@@ -1,14 +1,23 @@
 android-segmented-control
 =========================
-
+Android-Segmented is a custom view for Android which is based on RadioGroup and RadioButton widget.
 This implementation is inspired by [Segmented Controls](https://developer.apple.com/library/ios/documentation/userexperience/conceptual/UIKitUICatalog/UISegmentedControl.html) for iOS.
 
-A custom View for Android which is based on RadioGroup and RadioButton widget.
- 
 ![Sample Image](https://raw2.github.com/hoang8f/android-segmented-control/master/screenshot/screenshot.png)
 
-Usage
------
+##Including in your project
+-------------------------
+
+Using maven
+----------
+Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|android-segmented), so you just need to add the following dependency to your `build.gradle`.
+
+    dependencies {
+        compile 'info.hoang8f:android-segmented:1.0.0'
+    }
+
+Manually
+-------
 Copy(or merge) below files into corresponding file/folder:
   + SegmentedGroup.java
   + res/drawable/*
@@ -17,7 +26,9 @@ Copy(or merge) below files into corresponding file/folder:
   + res/values/dimens.xml
   + res/values/styles.xml (only RadioButton style)
 
-Define in xml like this:
+Usage
+-----
+Define in xml like this and make sure that the `RadioButton`'s style is: `@style/RadioButton`
 
 ```xml
 <info.hoang8f.android.segmented.SegmentedGroup
@@ -57,6 +68,10 @@ SegmentedGroup segmented4 = (SegmentedGroup) rootView.findViewById(R.id.segmente
 segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
 ```
 
+Credits
+-------
+Author: Le Van Hoang (@hoang8f)
+
 License
 -------
     The MIT License (MIT)
@@ -82,5 +97,4 @@ License
     SOFTWARE.
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hoang8f/android-segmented-control/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
