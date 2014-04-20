@@ -7,7 +7,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
@@ -29,7 +32,9 @@ public class SampleActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment implements RadioGroup.OnCheckedChangeListener {
+    public static class PlaceholderFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+
+        SegmentedGroup segmented5;
 
         public PlaceholderFragment() {
         }
@@ -49,10 +54,19 @@ public class SampleActivity extends ActionBarActivity {
             SegmentedGroup segmented4 = (SegmentedGroup) rootView.findViewById(R.id.segmented4);
             segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
 
+            segmented5 = (SegmentedGroup) rootView.findViewById(R.id.segmented5);
+            Button addBtn = (Button) rootView.findViewById(R.id.add_segmented);
+            Button removeBtn = (Button) rootView.findViewById(R.id.remove_segmented);
+
+            //Set listencer for button
+            addBtn.setOnClickListener(this);
+            removeBtn.setOnClickListener(this);
+
             //Set change listener on SegmentedGroup
             segmented2.setOnCheckedChangeListener(this);
             segmented3.setOnCheckedChangeListener(this);
             segmented4.setOnCheckedChangeListener(this);
+            segmented5.setOnCheckedChangeListener(this);
 
             return rootView;
         }
@@ -88,6 +102,38 @@ public class SampleActivity extends ActionBarActivity {
                     Toast.makeText(getActivity(), "America", Toast.LENGTH_SHORT).show();
             }
         }
-    }
 
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.add_segmented:
+                    addButton(segmented5);
+                    return;
+                case R.id.remove_segmented:
+                    removeButton(segmented5);
+                    return;
+            }
+        }
+
+        private void addButton(SegmentedGroup group) {
+            RadioButton radioButton = (RadioButton) getActivity().getLayoutInflater().inflate(R.layout.radio_button_item, null);
+            radioButton.setText("Segmented");
+            group.addView(radioButton);
+            //TODO:use updateBackground() method. (Need to change that method to public)
+            group.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
+        }
+
+        private void removeButton(SegmentedGroup group) {
+            if (group.getChildCount() < 1) return;
+            group.removeViewAt(group.getChildCount() - 1);
+            //TODO:use updateBackground() method. (Need to change that method to public)
+            group.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
+
+            //Update margin for last item
+            if (group.getChildCount() < 1) return;
+            RadioGroup.LayoutParams layoutParams = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(0, 0, 0, 0);
+            group.getChildAt(group.getChildCount() - 1).setLayoutParams(layoutParams);
+        }
+    }
 }
