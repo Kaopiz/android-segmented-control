@@ -142,4 +142,38 @@
         </info.hoang8f.android.segmented.SegmentedGroup>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#ff81ffa4"
+        android:gravity="center">
+
+        <info.hoang8f.android.segmented.SegmentedGroup
+            android:id="@+id/segmented5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+        </info.hoang8f.android.segmented.SegmentedGroup>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/add_segmented"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add segmented" />
+
+        <Button
+            android:id="@+id/remove_segmented"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove segmented" />
+    </LinearLayout>
 </LinearLayout>
