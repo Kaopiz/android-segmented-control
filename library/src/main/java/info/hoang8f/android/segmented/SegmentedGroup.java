@@ -26,7 +26,6 @@ public class SegmentedGroup extends RadioGroup {
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
         oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
-
     }
 
     public SegmentedGroup(Context context, AttributeSet attrs) {
@@ -34,7 +33,6 @@ public class SegmentedGroup extends RadioGroup {
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
         oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
-
     }
 
     @Override
@@ -57,15 +55,20 @@ public class SegmentedGroup extends RadioGroup {
 
     private void updateBackground() {
         int count = super.getChildCount();
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        params.setMargins(0, 0, -oneDP, 0);
         if (count > 1) {
-            super.getChildAt(0).setLayoutParams(params);
+            View child = getChildAt(0);
+            LayoutParams initParams = (LayoutParams) child.getLayoutParams();
+            LayoutParams params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
+            params.setMargins(0, 0, -oneDP, 0);
+            child.setLayoutParams(params);
             updateBackground(getChildAt(0), R.drawable.radio_checked_left, R.drawable.radio_unchecked_left);
-
             for (int i = 1; i < count - 1; i++) {
                 updateBackground(getChildAt(i), R.drawable.radio_checked_middle, R.drawable.radio_unchecked_middle);
-                super.getChildAt(i).setLayoutParams(params);
+                View child2 = getChildAt(i);
+                initParams = (LayoutParams) child2.getLayoutParams();
+                params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
+                params.setMargins(0, 0, -oneDP, 0);
+                child2.setLayoutParams(params);
             }
             updateBackground(getChildAt(count - 1), R.drawable.radio_checked_right, R.drawable.radio_unchecked_right);
         } else if (count == 1) {
