@@ -8,7 +8,7 @@ This implementation is inspired by [Segmented Controls](https://developer.apple.
 ##Including in your project
 
 
-####Using maven
+####Using maven    [![Maven Central](https://maven-badges.herokuapp.com/maven-central/info.hoang8f/android-segmented/badge.svg)](https://maven-badges.herokuapp.com/maven-central/info.hoang8f/android-segmented)
 Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|android-segmented), so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
