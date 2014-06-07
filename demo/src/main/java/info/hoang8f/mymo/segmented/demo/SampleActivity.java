@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
@@ -119,15 +118,13 @@ public class SampleActivity extends ActionBarActivity {
             RadioButton radioButton = (RadioButton) getActivity().getLayoutInflater().inflate(R.layout.radio_button_item, null);
             radioButton.setText("Segmented");
             group.addView(radioButton);
-            //TODO:use updateBackground() method. (Need to change that method to public)
-            group.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
+            group.updateBackground();
         }
 
         private void removeButton(SegmentedGroup group) {
             if (group.getChildCount() < 1) return;
             group.removeViewAt(group.getChildCount() - 1);
-            //TODO:use updateBackground() method. (Need to change that method to public)
-            group.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
+            group.updateBackground();
 
             //Update margin for last item
             if (group.getChildCount() < 1) return;
