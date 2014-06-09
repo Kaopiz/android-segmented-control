@@ -53,7 +53,7 @@ public class SegmentedGroup extends RadioGroup {
         updateBackground();
     }
 
-    private void updateBackground() {
+    public void updateBackground() {
         int count = super.getChildCount();
         if (count > 1) {
             View child = getChildAt(0);
