@@ -3,7 +3,7 @@ android-segmented-control
 Android-Segmented is a custom view for Android which is based on RadioGroup and RadioButton widget.
 This implementation is inspired by [Segmented Controls](https://developer.apple.com/library/ios/documentation/userexperience/conceptual/UIKitUICatalog/UISegmentedControl.html) for iOS.
 
-![Sample Image](https://raw2.github.com/hoang8f/android-segmented-control/master/screenshot/screenshot.png)
+![Sample Image](https://raw.githubusercontent.com/hoang8f/android-segmented-control/master/screenshot/screenshot.png)
 
 ##Including in your project
 
