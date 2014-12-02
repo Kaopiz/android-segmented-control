@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="ios_color">#ff0088ff</color>
+    <color name="ios_color_pressed">#DDE9F6</color>
     <color name="radio_button_selected_color">#ff33b5e5</color>
     <color name="radio_button_unselected_color">@android:color/transparent</color>
+
 </resources>

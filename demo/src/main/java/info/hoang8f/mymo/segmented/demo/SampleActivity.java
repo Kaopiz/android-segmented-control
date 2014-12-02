@@ -49,15 +49,15 @@ public class SampleActivity extends ActionBarActivity {
             SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
             //Tint color, and text color when checked
             segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
-
+            segmented3.setPressedTintColor(Color.parseColor("#DDD0FF3C"), Color.parseColor("#FFD0FF3C"));
             SegmentedGroup segmented4 = (SegmentedGroup) rootView.findViewById(R.id.segmented4);
-            segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
+            segmented4.setTintColor(getResources().getColor(R.color.ios_color));
 
             segmented5 = (SegmentedGroup) rootView.findViewById(R.id.segmented5);
             Button addBtn = (Button) rootView.findViewById(R.id.add_segmented);
             Button removeBtn = (Button) rootView.findViewById(R.id.remove_segmented);
 
-            //Set listencer for button
+            //Set listener for button
             addBtn.setOnClickListener(this);
             removeBtn.setOnClickListener(this);
 
@@ -107,10 +107,10 @@ public class SampleActivity extends ActionBarActivity {
             switch (v.getId()) {
                 case R.id.add_segmented:
                     addButton(segmented5);
-                    return;
+                    break;
                 case R.id.remove_segmented:
                     removeButton(segmented5);
-                    return;
+                    break;
             }
         }
 

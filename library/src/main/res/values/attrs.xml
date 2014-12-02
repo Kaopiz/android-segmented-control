@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SegmentedGroup">
+        <attr name="tint_color" format="color" />
+        <attr name="checked_color" format="color" />
+        <attr name="pressed_tint_color" format="color" />
+        <attr name="pressed_stroke_color" format="color" />
+        <attr name="text_color" format="color" />
+        <attr name="pressed_text_color" format="color" />
+    </declare-styleable>
+</resources>
