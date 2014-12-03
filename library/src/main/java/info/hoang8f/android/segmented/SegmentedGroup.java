@@ -53,17 +53,17 @@ public class SegmentedGroup extends RadioGroup {
 
     private void init(Context context, AttributeSet attrs) {
         resources = getResources();
-        mTintColor = resources.getColor(R.color.ios_color);
+        mTintColor = resources.getColor(R.color.ios_blue);
         mCheckedTextColor = Color.WHITE;
-        mPressedTintColor = resources.getColor(R.color.ios_color_pressed);
-        mPressedStrokeColor = resources.getColor(R.color.ios_color);
+        mPressedTintColor = resources.getColor(R.color.ios_blue_pressed);
+        mPressedStrokeColor = resources.getColor(R.color.ios_blue);
 
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SegmentedGroup);
-            mTintColor = a.getColor(R.styleable.SegmentedGroup_tint_color, resources.getColor(R.color.ios_color));
+            mTintColor = a.getColor(R.styleable.SegmentedGroup_tint_color, resources.getColor(R.color.ios_blue));
             mCheckedTextColor = a.getColor(R.styleable.SegmentedGroup_checked_color, Color.WHITE);
-            mPressedTintColor = a.getColor(R.styleable.SegmentedGroup_pressed_tint_color, resources.getColor(R.color.ios_color_pressed));
-            mPressedStrokeColor = a.getColor(R.styleable.SegmentedGroup_pressed_stroke_color, resources.getColor(R.color.ios_color));
+            mPressedTintColor = a.getColor(R.styleable.SegmentedGroup_pressed_tint_color, resources.getColor(R.color.ios_blue_pressed));
+            mPressedStrokeColor = a.getColor(R.styleable.SegmentedGroup_pressed_stroke_color, resources.getColor(R.color.ios_blue));
         }
 
         oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
