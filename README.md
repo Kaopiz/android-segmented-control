@@ -64,7 +64,7 @@ Attributes
 * ```app:pressed_text_color``` (color)
 
 You also can be change the tint color and title color when button is checked by `setTintColor` method.
-Also you can change the pressed tint color.
+Also you can change the pressed tint color by `setPressedTintColor` method.
 Here is sample code:
 
 ```java
