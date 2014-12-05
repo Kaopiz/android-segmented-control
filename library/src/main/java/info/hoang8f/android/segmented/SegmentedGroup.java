@@ -26,14 +26,6 @@ public class SegmentedGroup extends RadioGroup {
     private int mPressedTintColor;
     private int mPressedStrokeColor;
 
-//    private TransitionDrawable transitionDrawable;
-
-//    private OnSegmentedGroupChecked listener;
-
-//    public interface OnSegmentedGroupChecked {
-//        public void onCheckedChanged(RadioGroup group, int checkedId);
-//    }
-
     public SegmentedGroup(Context context) {
         super(context);
         init(context, null);
@@ -68,13 +60,6 @@ public class SegmentedGroup extends RadioGroup {
 
         oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
 
-//        setOnCheckedChangeListener(new OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                transitionDrawable.startTransition(200);
-////                ObjectAnimator anim = ObjectAnimator.ofInt(group, "backgroundColor", color1, color2);
-//            }
-//        });
     }
 
     @Override
@@ -153,9 +138,6 @@ public class SegmentedGroup extends RadioGroup {
         ((GradientDrawable) uncheckedDrawable).setStroke(oneDP, mTintColor);
         ((GradientDrawable) pressedDrawable).setColor(mPressedTintColor);
         ((GradientDrawable) pressedDrawable).setStroke(oneDP, mPressedStrokeColor);
-
-//        transitionDrawable = new TransitionDrawable(new Drawable[]{uncheckedDrawable, checkedDrawable});
-
 
         //Create drawable
         StateListDrawable stateListDrawable = new StateListDrawable();
