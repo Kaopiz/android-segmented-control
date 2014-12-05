@@ -22,6 +22,7 @@ Copy(or merge) below files into corresponding file/folder:
   + res/drawable-v14/*
   + res/values/colors.xml
   + res/values/dimens.xml
+  + res/values/attrs.xml
   + res/values/styles.xml (only RadioButton style)
 
 Usage
@@ -52,6 +53,16 @@ Define in xml like this and make sure that the `RadioButton`'s style is: `@style
 </info.hoang8f.android.segmented.SegmentedGroup>
 ```
 
+Attributes
+----------
+
+* ```app:tint_color``` (color)
+* ```app:checked_color``` (color)
+* ```app:pressed_tint_color``` (color)
+* ```app:pressed_stroke_color``` (color)
+* ```app:text_color``` (color)
+* ```app:pressed_text_color``` (color)
+
 You also can be change the tint color and title color when button is checked by `setTintColor` method.
 Here is sample code:
 
@@ -61,6 +72,7 @@ segmented2.setTintColor(Color.DKGRAY);
 
 SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
 segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
+segmented3.setPressedTintColor(Color.parseColor("#DDD0FF3C"), Color.parseColor("#FFD0FF3C"));
 
 SegmentedGroup segmented4 = (SegmentedGroup) rootView.findViewById(R.id.segmented4);
 segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
