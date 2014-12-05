@@ -45,6 +45,7 @@ public class SampleActivity extends ActionBarActivity {
 
             SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
             segmented2.setTintColor(Color.DKGRAY);
+            segmented2.setPressedTintColor(Color.LTGRAY, Color.DKGRAY);
 
             SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
             //Tint color, and text color when checked

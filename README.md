@@ -64,11 +64,13 @@ Attributes
 * ```app:pressed_text_color``` (color)
 
 You also can be change the tint color and title color when button is checked by `setTintColor` method.
+Also you can change the pressed tint color.
 Here is sample code:
 
 ```java
 SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
 segmented2.setTintColor(Color.DKGRAY);
+segmented2.setPressedTintColor(Color.LTGRAY, Color.DKGRAY);
 
 SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
 segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
