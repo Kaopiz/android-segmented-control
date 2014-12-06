@@ -16,7 +16,7 @@ Added support for vertical RadioGroup by [tchar](https://github.com/tchar) for v
 Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|android-segmented), so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'info.hoang8f:android-segmented:1.0.2'
+        compile 'info.hoang8f:android-segmented:1.0.4'
     }
 
 ####Manually
