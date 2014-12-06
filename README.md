@@ -8,7 +8,7 @@ This implementation is inspired by [Segmented Controls](https://developer.apple.
 Added support for vertical RadioGroup by tchar (https://github.com/tchar), based uppon hoang8f’s work only, by just adding some code and some xml drawables
 for vertical RadioGroup
 
-![Sample Image](https://raw.githubusercontent.com/tchar/android-segmented-control/vertical-radiobuttons/screenshot/screenshot2.png)
+![Sample Image](https://raw.githubusercontent.com/tchar/android-segmented-control/vertical-radiogroups/screenshot/screenshot2.png)
 
 ##Including in your project
 
