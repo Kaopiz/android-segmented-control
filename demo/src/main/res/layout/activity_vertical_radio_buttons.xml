@@ -21,7 +21,7 @@
 
             <RadioButton
                 android:id="@+id/button1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="One"
                 style="@style/RadioButton" />
@@ -45,7 +45,7 @@
 
             <RadioButton
                 android:id="@+id/button21"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="One"
@@ -53,7 +53,7 @@
 
             <RadioButton
                 android:id="@+id/button22"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Two"
@@ -78,21 +78,21 @@
 
             <RadioButton
                 android:id="@+id/button31"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="One"
                 style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button32"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Two"
                 style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button33"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Three"
                 style="@style/RadioButton" />
@@ -116,28 +116,28 @@
 
             <RadioButton
                 android:id="@+id/button41"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Asia"
                 style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button42"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Africa"
                 style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button43"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Europe"
                 style="@style/RadioButton" />
 
             <RadioButton
                 android:id="@+id/button44"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="America"
                 style="@style/RadioButton" />
