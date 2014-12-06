@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="info.hoang8f.mymo.segmented.demo.VerticalRadioButtonsActivity"
+            android:label="@string/vertical_activity_name"
+            android:parentActivityName="info.hoang8f.mymo.segmented.demo.SampleActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="info.hoang8f.mymo.segmented.demo.SampleActivity" />
+        </activity>
     </application>
 
 </manifest>
