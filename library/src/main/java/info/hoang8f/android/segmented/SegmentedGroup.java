@@ -12,6 +12,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 public class SegmentedGroup extends RadioGroup {
@@ -59,18 +60,44 @@ public class SegmentedGroup extends RadioGroup {
             View child = getChildAt(0);
             LayoutParams initParams = (LayoutParams) child.getLayoutParams();
             LayoutParams params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
-            params.setMargins(0, 0, -oneDP, 0);
+            // Check orientation for proper margins
+            if (getOrientation() == LinearLayout.HORIZONTAL) {
+                params.setMargins(0, 0, -oneDP, 0);
+            } else {
+                params.setMargins(0, 0, 0, -oneDP);
+            }
             child.setLayoutParams(params);
-            updateBackground(getChildAt(0), R.drawable.radio_checked_left, R.drawable.radio_unchecked_left);
+            // Check orientation for proper layout
+            if (getOrientation() == LinearLayout.HORIZONTAL) {
+                updateBackground(getChildAt(0), R.drawable.radio_checked_left, R.drawable.radio_unchecked_left);
+            } else {
+                updateBackground(getChildAt(0), R.drawable.radio_checked_top, R.drawable.radio_unchecked_top);
+            }
             for (int i = 1; i < count - 1; i++) {
-                updateBackground(getChildAt(i), R.drawable.radio_checked_middle, R.drawable.radio_unchecked_middle);
+                // Check orientation for proper layout
+                if (getOrientation() == LinearLayout.HORIZONTAL) {
+                    updateBackground(getChildAt(i), R.drawable.radio_checked_middle, R.drawable.radio_unchecked_middle);
+                } else {
+                    // Middle radiobutton when checked is the same as horizontal.
+                    updateBackground(getChildAt(i), R.drawable.radio_checked_middle, R.drawable.radio_unchecked_middle_vertical);
+                }
                 View child2 = getChildAt(i);
                 initParams = (LayoutParams) child2.getLayoutParams();
                 params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
-                params.setMargins(0, 0, -oneDP, 0);
+                // Check orientation for proper margins
+                if (getOrientation() == LinearLayout.HORIZONTAL) {
+                    params.setMargins(0, 0, -oneDP, 0);
+                } else {
+                    params.setMargins(0, 0, 0, -oneDP);
+                }
                 child2.setLayoutParams(params);
             }
-            updateBackground(getChildAt(count - 1), R.drawable.radio_checked_right, R.drawable.radio_unchecked_right);
+            // Check orientation for proper layout
+            if (getOrientation() == LinearLayout.HORIZONTAL) {
+                updateBackground(getChildAt(count - 1), R.drawable.radio_checked_right, R.drawable.radio_unchecked_right);
+            } else {
+                updateBackground(getChildAt(count - 1), R.drawable.radio_checked_bottom, R.drawable.radio_unchecked_bottom);
+            }
         } else if (count == 1) {
             updateBackground(getChildAt(0), R.drawable.radio_checked_default, R.drawable.radio_unchecked_default);
         }

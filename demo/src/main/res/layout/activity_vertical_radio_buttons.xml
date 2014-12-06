@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/button1"
@@ -38,14 +38,14 @@
 
         <info.hoang8f.android.segmented.SegmentedGroup
             android:id="@+id/segmented2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/button21"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="One"
@@ -53,7 +53,7 @@
 
             <RadioButton
                 android:id="@+id/button22"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Two"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/button31"
@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/button41"
@@ -145,57 +145,4 @@
 
     </RelativeLayout>
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#ff81ffa4"
-        android:scrollbars="horizontal">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <info.hoang8f.android.segmented.SegmentedGroup
-                android:id="@+id/segmented5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
-
-            </info.hoang8f.android.segmented.SegmentedGroup>
-        </RelativeLayout>
-
-    </HorizontalScrollView>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/add_segmented"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add segmented" />
-
-        <Button
-            android:id="@+id/remove_segmented"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remove segmented" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/view_vertical_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View vertical buttons"
-            android:layout_gravity="center" />
-     </LinearLayout>
 </LinearLayout>
