@@ -71,7 +71,7 @@ public class SegmentedGroup extends RadioGroup {
             if (getOrientation() == LinearLayout.HORIZONTAL) {
                 updateBackground(getChildAt(0), R.drawable.radio_checked_left, R.drawable.radio_unchecked_left);
             } else {
-                updateBackground(getChildAt(0), R.drawable.radio_checked_topl, R.drawable.radio_unchecked_top);
+                updateBackground(getChildAt(0), R.drawable.radio_checked_top, R.drawable.radio_unchecked_top);
             }
             for (int i = 1; i < count - 1; i++) {
                 // Check orientation for proper layout
