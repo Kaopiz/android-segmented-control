@@ -9,7 +9,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,7 +16,7 @@ import android.widget.RadioGroup;
 
 public class SegmentedGroup extends RadioGroup {
 
-    private int oneDP;
+    private int mMarginDp;
     private Resources resources;
     private int mTintColor;
     private int mCheckedTextColor = Color.WHITE;
@@ -26,14 +25,14 @@ public class SegmentedGroup extends RadioGroup {
         super(context);
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
-        oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
+        mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
     }
 
     public SegmentedGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
-        oneDP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
+        mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
     }
 
     @Override
@@ -62,9 +61,9 @@ public class SegmentedGroup extends RadioGroup {
             LayoutParams params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
             // Check orientation for proper margins
             if (getOrientation() == LinearLayout.HORIZONTAL) {
-                params.setMargins(0, 0, -oneDP, 0);
+                params.setMargins(0, 0, -mMarginDp, 0);
             } else {
-                params.setMargins(0, 0, 0, -oneDP);
+                params.setMargins(0, 0, 0, -mMarginDp);
             }
             child.setLayoutParams(params);
             // Check orientation for proper layout
@@ -86,9 +85,9 @@ public class SegmentedGroup extends RadioGroup {
                 params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
                 // Check orientation for proper margins
                 if (getOrientation() == LinearLayout.HORIZONTAL) {
-                    params.setMargins(0, 0, -oneDP, 0);
+                    params.setMargins(0, 0, -mMarginDp, 0);
                 } else {
-                    params.setMargins(0, 0, 0, -oneDP);
+                    params.setMargins(0, 0, 0, -mMarginDp);
                 }
                 child2.setLayoutParams(params);
             }
@@ -116,7 +115,8 @@ public class SegmentedGroup extends RadioGroup {
         Drawable checkedDrawable = resources.getDrawable(checked).mutate();
         Drawable uncheckedDrawable = resources.getDrawable(unchecked).mutate();
         ((GradientDrawable) checkedDrawable).setColor(mTintColor);
-        ((GradientDrawable) uncheckedDrawable).setStroke(oneDP, mTintColor);
+        ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mTintColor);
+        ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mTintColor);
 
         //Create drawable
         StateListDrawable stateListDrawable = new StateListDrawable();

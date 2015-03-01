@@ -10,6 +10,6 @@
         android:topLeftRadius="0.1dp"
         android:topRightRadius="0.1dp" />
     <stroke
-        android:height="1dp"
+        android:height="@dimen/radio_button_stroke_border"
         android:color="@color/radio_button_selected_color" />
 </shape>
