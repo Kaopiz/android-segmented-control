@@ -20,12 +20,14 @@ public class SegmentedGroup extends RadioGroup {
     private Resources resources;
     private int mTintColor;
     private int mCheckedTextColor = Color.WHITE;
+    private LayoutSelector mLayoutSelector;
 
     public SegmentedGroup(Context context) {
         super(context);
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
         mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
+        mLayoutSelector = new LayoutSelector();
     }
 
     public SegmentedGroup(Context context, AttributeSet attrs) {
@@ -33,6 +35,7 @@ public class SegmentedGroup extends RadioGroup {
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
         mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
+        mLayoutSelector = new LayoutSelector();
     }
 
     @Override
@@ -55,8 +58,13 @@ public class SegmentedGroup extends RadioGroup {
 
     public void updateBackground() {
         int count = super.getChildCount();
-        if (count > 1) {
-            View child = getChildAt(0);
+        for (int i = 0; i < count; i++) {
+            View child = getChildAt(i);
+            updateBackground(child);
+
+            if (i == count - 1)
+                break;
+
             LayoutParams initParams = (LayoutParams) child.getLayoutParams();
             LayoutParams params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
             // Check orientation for proper margins
@@ -66,43 +74,12 @@ public class SegmentedGroup extends RadioGroup {
                 params.setMargins(0, 0, 0, -mMarginDp);
             }
             child.setLayoutParams(params);
-            // Check orientation for proper layout
-            if (getOrientation() == LinearLayout.HORIZONTAL) {
-                updateBackground(getChildAt(0), R.drawable.radio_checked_left, R.drawable.radio_unchecked_left);
-            } else {
-                updateBackground(getChildAt(0), R.drawable.radio_checked_top, R.drawable.radio_unchecked_top);
-            }
-            for (int i = 1; i < count - 1; i++) {
-                // Check orientation for proper layout
-                if (getOrientation() == LinearLayout.HORIZONTAL) {
-                    updateBackground(getChildAt(i), R.drawable.radio_checked_middle, R.drawable.radio_unchecked_middle);
-                } else {
-                    // Middle radiobutton when checked is the same as horizontal.
-                    updateBackground(getChildAt(i), R.drawable.radio_checked_middle, R.drawable.radio_unchecked_middle_vertical);
-                }
-                View child2 = getChildAt(i);
-                initParams = (LayoutParams) child2.getLayoutParams();
-                params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
-                // Check orientation for proper margins
-                if (getOrientation() == LinearLayout.HORIZONTAL) {
-                    params.setMargins(0, 0, -mMarginDp, 0);
-                } else {
-                    params.setMargins(0, 0, 0, -mMarginDp);
-                }
-                child2.setLayoutParams(params);
-            }
-            // Check orientation for proper layout
-            if (getOrientation() == LinearLayout.HORIZONTAL) {
-                updateBackground(getChildAt(count - 1), R.drawable.radio_checked_right, R.drawable.radio_unchecked_right);
-            } else {
-                updateBackground(getChildAt(count - 1), R.drawable.radio_checked_bottom, R.drawable.radio_unchecked_bottom);
-            }
-        } else if (count == 1) {
-            updateBackground(getChildAt(0), R.drawable.radio_checked_default, R.drawable.radio_unchecked_default);
         }
     }
 
-    private void updateBackground(View view, int checked, int unchecked) {
+    private void updateBackground(View view) {
+        int checked = mLayoutSelector.getSelected(view);
+        int unchecked = mLayoutSelector.getUnselected(view);
         //Set text color
         ColorStateList colorStateList = new ColorStateList(new int[][]{
                 {android.R.attr.state_pressed},
@@ -128,6 +105,74 @@ public class SegmentedGroup extends RadioGroup {
             view.setBackground(stateListDrawable);
         } else {
             view.setBackgroundDrawable(stateListDrawable);
+        }
+    }
+
+    private class LayoutSelector{
+
+        private int children;
+        private int child;
+        private int selectedLayout;
+        private int unselectedLayout;
+
+        private int getChildren(){
+             return SegmentedGroup.this.getChildCount();
+        }
+
+        private void setLayoutFromChild(){
+            if (children == 1){
+                selectedLayout = R.drawable.radio_checked_default;
+                unselectedLayout = R.drawable.radio_unchecked_default;
+            } else if (child == 0){
+                if (getOrientation() == LinearLayout.HORIZONTAL){
+                    selectedLayout = R.drawable.radio_checked_left;
+                    unselectedLayout = R.drawable.radio_unchecked_left;
+                } else {
+                    selectedLayout = R.drawable.radio_checked_top;
+                    unselectedLayout = R.drawable.radio_unchecked_top;
+                }
+            } else if (child == children - 1){
+                if (getOrientation() == LinearLayout.HORIZONTAL){
+                    selectedLayout = R.drawable.radio_checked_right;
+                    unselectedLayout = R.drawable.radio_unchecked_right;
+                } else {
+                    selectedLayout = R.drawable.radio_checked_bottom;
+                    unselectedLayout = R.drawable.radio_unchecked_bottom;
+                }
+            } else{
+                selectedLayout = R.drawable.radio_checked_middle;
+                if (getOrientation() == LinearLayout.HORIZONTAL){
+                    unselectedLayout = R.drawable.radio_unchecked_middle;
+                } else {
+                    unselectedLayout = R.drawable.radio_unchecked_middle_vertical;
+                }
+            }
+        }
+
+        private int getChildIndex(View view){
+            return SegmentedGroup.this.indexOfChild(view);
+        }
+
+        public int getSelected(View view){
+            int newChildren = getChildren();
+            int newChild = getChildIndex(view);
+            if (this.children != newChildren || this.child != newChild){
+                this.children = newChildren;
+                this.child = newChild;
+                setLayoutFromChild();
+            }
+            return selectedLayout;
+        }
+
+        public int getUnselected(View view){
+            int newChildren = getChildren();
+            int newChild = getChildIndex(view);
+            if (this.children != newChildren || this.child != newChild){
+                this.children = newChildren;
+                this.child = newChild;
+                setLayoutFromChild();
+            }
+            return unselectedLayout;
         }
     }
 }
