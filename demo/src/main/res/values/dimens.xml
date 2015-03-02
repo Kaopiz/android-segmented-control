@@ -3,5 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="radio_button_conner_radius">5dp</dimen>
-    <dimen name="radio_button_stroke_border">2dp</dimen>
+    <dimen name="radio_button_stroke_border">1dp</dimen>
     </resources>

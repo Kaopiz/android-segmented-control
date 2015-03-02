@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            segmentedgroup:border_width="2dp"
+            segmentedgroup:corner_radius="1dp">
 
             <RadioButton
                 android:id="@+id/button1"
@@ -41,7 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            segmentedgroup:border_width="2dp"
+            segmentedgroup:corner_radius="0dp">
 
             <RadioButton
                 android:id="@+id/button21"
@@ -74,7 +79,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            segmentedgroup:border_width="4dp"
+            segmentedgroup:corner_radius="7dp">
 
             <RadioButton
                 android:id="@+id/button31"
@@ -112,7 +119,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            segmentedgroup:border_width="4dp"
+            segmentedgroup:corner_radius="15dp">
 
             <RadioButton
                 android:id="@+id/button41"
