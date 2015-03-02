@@ -3,11 +3,11 @@ android-segmented-control
 Android-Segmented is a custom view for Android which is based on RadioGroup and RadioButton widget.
 This implementation is inspired by [Segmented Controls](https://developer.apple.com/library/ios/documentation/userexperience/conceptual/UIKitUICatalog/UISegmentedControl.html) for iOS.
 
-![Sample Image](https://raw.githubusercontent.com/hoang8f/android-segmented-control/master/screenshot/screenshot.png)
+![Sample Image](https://github.com/tchar/android-segmented-control/blob/attributes-support/screenshot/screenshot.png)
 
-Added support for vertical RadioGroup by [tchar](https://github.com/tchar) for vertical RadioGroup
+Added support for vertical RadioGroup by [tchar](https://github.com/tchar).
 
-![Sample Image](https://raw.githubusercontent.com/tchar/android-segmented-control/vertical-radiogroups/screenshot/screenshot2.png)
+![Sample Image](https://github.com/tchar/android-segmented-control/blob/attributes-support/screenshot/screenshot2.png)
 
 ##Including in your project
 
@@ -33,12 +33,16 @@ Usage
 Define in xml like this and make sure that the `RadioButton`'s style is: `@style/RadioButton`
 
 ```xml
+
 <info.hoang8f.android.segmented.SegmentedGroup
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
     android:id="@+id/segmented2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    segmentedgroup:border_width="2dp"
+    segmentedgroup:corner_radius="10dp">
 
     <RadioButton
         android:id="@+id/button21"
@@ -69,6 +73,7 @@ segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07
 SegmentedGroup segmented4 = (SegmentedGroup) rootView.findViewById(R.id.segmented4);
 segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
 ```
+If you dont specify border_width and/or corner_radius the default values will be used (1dp for border_width and 5 dp for corner_radius)
 
 Credits
 -------
