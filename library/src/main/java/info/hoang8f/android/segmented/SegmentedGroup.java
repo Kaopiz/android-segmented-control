@@ -101,8 +101,8 @@ public class SegmentedGroup extends RadioGroup {
     }
 
     private void updateBackground(View view) {
-        int checked = mLayoutSelector.getSelected(view);
-        int unchecked = mLayoutSelector.getUnselected(view);
+        int checked = mLayoutSelector.getSelected();
+        int unchecked = mLayoutSelector.getUnselected();
         //Set text color
         ColorStateList colorStateList = new ColorStateList(new int[][]{
                 {android.R.attr.state_pressed},
@@ -208,19 +208,13 @@ public class SegmentedGroup extends RadioGroup {
         }
 
         /* Returns the selected layout id based on view */
-        public int getSelected(View view){
-            int newChildren = getChildren();
-            int newChild = getChildIndex(view);
-            setChildRadii(newChildren, newChild);
+        public int getSelected(){
             return SELECTED_LAYOUT;
         }
 
         /* Returns the unselected layout id based on view */
-        public int getUnselected(View view){
-            int newChildren = getChildren();
-            int newChild = getChildIndex(view);
-            setChildRadii(newChildren, newChild);
-            return UNSELECTED_LAYOUT;
+        public int getUnselected(){
+             return UNSELECTED_LAYOUT;
         }
 
         /* Returns the radii float table based on view for Gradient.setRadii()*/
