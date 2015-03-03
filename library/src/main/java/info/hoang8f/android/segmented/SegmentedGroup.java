@@ -118,8 +118,8 @@ public class SegmentedGroup extends RadioGroup {
         ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mTintColor);
         ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mTintColor);
         //Set proper radius
-        ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getRadii(view));
-        ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getRadii(view));
+        ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
+        ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
 
         //Create drawable
         StateListDrawable stateListDrawable = new StateListDrawable();
@@ -161,6 +161,8 @@ public class SegmentedGroup extends RadioGroup {
         private float[] radii;          //result radii float table
 
         public LayoutSelector(float cornerRadius){
+            children = -1; // Init this to force setChildRadii() to enter for the first time.
+            child = -1; // Init this to force setChildRadii() to enter for the first time
             r = cornerRadius;
             rleft = new float[]{r, r, r1, r1, r1, r1, r, r};
             rright = new float[]{r1, r1, r, r, r, r, r1, r1};
@@ -178,7 +180,7 @@ public class SegmentedGroup extends RadioGroup {
             return SegmentedGroup.this.indexOfChild(view);
         }
 
-        private void setLayoutFromChild(int newChildren, int newChild){
+        private void setChildRadii(int newChildren, int newChild){
 
             // If same values are passed, just return. No need to update anything
             if (children == newChildren && child == newChild)
@@ -209,7 +211,7 @@ public class SegmentedGroup extends RadioGroup {
         public int getSelected(View view){
             int newChildren = getChildren();
             int newChild = getChildIndex(view);
-            setLayoutFromChild(newChildren, newChild);
+            setChildRadii(newChildren, newChild);
             return SELECTED_LAYOUT;
         }
 
@@ -217,15 +219,15 @@ public class SegmentedGroup extends RadioGroup {
         public int getUnselected(View view){
             int newChildren = getChildren();
             int newChild = getChildIndex(view);
-            setLayoutFromChild(newChildren, newChild);
+            setChildRadii(newChildren, newChild);
             return UNSELECTED_LAYOUT;
         }
 
         /* Returns the radii float table based on view for Gradient.setRadii()*/
-        public float[] getRadii(View view){
+        public float[] getChildRadii(View view){
             int newChildren = getChildren();
             int newChild = getChildIndex(view);
-            setLayoutFromChild(newChildren, newChild);
+            setChildRadii(newChildren, newChild);
             return radii;
         }
     }
