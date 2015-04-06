@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            segmentedgroup:border_width="5dp">
+            segmentedgroup:border_width="1dp">
 
             <RadioButton
                 android:id="@+id/button1"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            segmentedgroup:border_width="4dp"
+            segmentedgroup:border_width="1dp"
             segmentedgroup:corner_radius="10dp">
 
             <RadioButton
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            segmentedgroup:border_width="8dp"
+            segmentedgroup:border_width="1dp"
             segmentedgroup:corner_radius="0dp">
 
             <RadioButton
