@@ -77,7 +77,9 @@ If you dont specify border_width and/or corner_radius the default values will be
 
 Credits
 -------
-Author: Le Van Hoang (@hoang8f)
+Author: 
+* Le Van Hoang (@hoang8f)
+* [tchar](https://github.com/tchar)
 
 License
 -------
