@@ -3,14 +3,10 @@ android-segmented-control
 Android-Segmented is a custom view for Android which is based on RadioGroup and RadioButton widget.
 This implementation is inspired by [Segmented Controls](https://developer.apple.com/library/ios/documentation/userexperience/conceptual/UIKitUICatalog/UISegmentedControl.html) for iOS.
 
-![Sample Image](https://github.com/tchar/android-segmented-control/blob/attributes-support/screenshot/screenshot.png)
 
-Added support for vertical RadioGroup by [tchar](https://github.com/tchar).
-
-![Sample Image](https://github.com/tchar/android-segmented-control/blob/attributes-support/screenshot/screenshot2.png)
+![Sample Image](https://raw.githubusercontent.com/hoang8f/android-segmented-control/master/screenshot/screenshot3.png)
 
 ##Including in your project
-
 
 ####Using maven    [![Maven Central](https://maven-badges.herokuapp.com/maven-central/info.hoang8f/android-segmented/badge.svg)](https://maven-badges.herokuapp.com/maven-central/info.hoang8f/android-segmented)
 Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|android-segmented), so you just need to add the following dependency to your `build.gradle`.
@@ -79,7 +75,7 @@ Credits
 -------
 Author: 
 * Le Van Hoang (@hoang8f)
-* [tchar](https://github.com/tchar)
+* Added support for vertical RadioGroup by [tchar](https://github.com/tchar).
 
 License
 -------
