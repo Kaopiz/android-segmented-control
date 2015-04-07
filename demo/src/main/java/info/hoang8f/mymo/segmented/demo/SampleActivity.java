@@ -1,7 +1,5 @@
 package info.hoang8f.mymo.segmented.demo;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -44,32 +42,25 @@ public class SampleActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_sample, container, false);
 
-            SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
-            segmented2.setTintColor(Color.DKGRAY);
-
-            SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
-            //Tint color, and text color when checked
-            segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
-
-            SegmentedGroup segmented4 = (SegmentedGroup) rootView.findViewById(R.id.segmented4);
-            segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
+//            SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
+//            segmented2.setTintColor(Color.DKGRAY);
+//
+//            SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
+//            //Tint color, and text color when checked
+////            segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
+//
 
             segmented5 = (SegmentedGroup) rootView.findViewById(R.id.segmented5);
             Button addBtn = (Button) rootView.findViewById(R.id.add_segmented);
             Button removeBtn = (Button) rootView.findViewById(R.id.remove_segmented);
 
-            // Added button to check vertical views
-            Button viewVerticalButton = (Button) rootView.findViewById(R.id.view_vertical_buttons);
-
-            //Set listencer for button
+            //Set listener for button
             addBtn.setOnClickListener(this);
             removeBtn.setOnClickListener(this);
-            viewVerticalButton.setOnClickListener(this);
 
             //Set change listener on SegmentedGroup
-            segmented2.setOnCheckedChangeListener(this);
-            segmented3.setOnCheckedChangeListener(this);
-            segmented4.setOnCheckedChangeListener(this);
+//            segmented2.setOnCheckedChangeListener(this);
+//            segmented3.setOnCheckedChangeListener(this);
             segmented5.setOnCheckedChangeListener(this);
 
             return rootView;
@@ -93,17 +84,8 @@ public class SampleActivity extends ActionBarActivity {
                 case R.id.button33:
                     Toast.makeText(getActivity(), "Three", Toast.LENGTH_SHORT).show();
                     return;
-                case R.id.button41:
-                    Toast.makeText(getActivity(), "Asia", Toast.LENGTH_SHORT).show();
-                    return;
-                case R.id.button42:
-                    Toast.makeText(getActivity(), "Africa", Toast.LENGTH_SHORT).show();
-                    return;
-                case R.id.button43:
-                    Toast.makeText(getActivity(), "Europe", Toast.LENGTH_SHORT).show();
-                    return;
-                case R.id.button44:
-                    Toast.makeText(getActivity(), "America", Toast.LENGTH_SHORT).show();
+                default:
+                    // Nothing to do
             }
         }
 
@@ -116,17 +98,14 @@ public class SampleActivity extends ActionBarActivity {
                 case R.id.remove_segmented:
                     removeButton(segmented5);
                     return;
-                case R.id.view_vertical_buttons:
-                    Intent intent = new Intent(getActivity().getApplicationContext()
-                            , VerticalRadioButtonsActivity.class);
-                    getActivity().startActivity(intent);
-                    return;
+                default:
+                    // Nothing to do
             }
         }
 
         private void addButton(SegmentedGroup group) {
             RadioButton radioButton = (RadioButton) getActivity().getLayoutInflater().inflate(R.layout.radio_button_item, null);
-            radioButton.setText("Segmented");
+            radioButton.setText("Button " + (group.getChildCount() + 1));
             group.addView(radioButton);
             group.updateBackground();
         }
