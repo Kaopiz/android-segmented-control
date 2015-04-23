@@ -21,9 +21,11 @@ public class SegmentedGroup extends RadioGroup {
     private int mMarginDp;
     private Resources resources;
     private int mTintColor;
+    private int mTextColor = Color.CYAN;
     private int mCheckedTextColor = Color.WHITE;
     private LayoutSelector mLayoutSelector;
     private Float mCornerRadius;
+    private boolean mDrawCheckedDrawable = true;
 
     public SegmentedGroup(Context context) {
         super(context);
@@ -54,6 +56,10 @@ public class SegmentedGroup extends RadioGroup {
                     R.styleable.SegmentedGroup_tint_color,
                     getResources().getColor(R.color.radio_button_selected_color));
 
+            mTextColor = typedArray.getColor(
+                    R.styleable.SegmentedGroup_text_color,
+                    getResources().getColor(android.R.color.holo_blue_bright));
+
             mCheckedTextColor = typedArray.getColor(
                     R.styleable.SegmentedGroup_checked_text_color,
                     getResources().getColor(android.R.color.white));
@@ -80,6 +86,12 @@ public class SegmentedGroup extends RadioGroup {
         updateBackground();
     }
 
+    public void setTextColor(int textColor)
+    {
+        mTextColor = textColor;
+        updateBackground();
+    }
+
     public void setTintColor(int tintColor) {
         mTintColor = tintColor;
         updateBackground();
@@ -88,6 +100,11 @@ public class SegmentedGroup extends RadioGroup {
     public void setTintColor(int tintColor, int checkedTextColor) {
         mTintColor = tintColor;
         mCheckedTextColor = checkedTextColor;
+        updateBackground();
+    }
+
+    public void setDrawCheckedDrawable(boolean b) {
+        mDrawCheckedDrawable = b;
         updateBackground();
     }
 
@@ -120,13 +137,14 @@ public class SegmentedGroup extends RadioGroup {
                 {android.R.attr.state_pressed},
                 {-android.R.attr.state_pressed, -android.R.attr.state_checked},
                 {-android.R.attr.state_pressed, android.R.attr.state_checked}},
-                new int[]{Color.GRAY, mTintColor, mCheckedTextColor});
+                new int[]{Color.GRAY, mTextColor, mCheckedTextColor});
         ((Button) view).setTextColor(colorStateList);
 
         //Redraw with tint color
         Drawable checkedDrawable = resources.getDrawable(checked).mutate();
         Drawable uncheckedDrawable = resources.getDrawable(unchecked).mutate();
-        ((GradientDrawable) checkedDrawable).setColor(mTintColor);
+        if(mDrawCheckedDrawable)
+            ((GradientDrawable) checkedDrawable).setColor(mTintColor);
         ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mTintColor);
         ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mTintColor);
         //Set proper radius
