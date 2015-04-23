@@ -3,7 +3,12 @@
     android:shape="rectangle"
     android:padding="10dp">
     <!-- you can use any color you want I used here gray color-->
-    <solid android:color="@color/radio_button_selected_color" />
+    <!--<solid android:color="@color/radio_button_selected_color" />-->
+    <gradient
+        android:type="linear"
+        android:startColor="#ff4dd512"
+        android:endColor="#ff2a9b02"
+        android:angle="270"/>
     <stroke
         android:width="@dimen/radio_button_stroke_border"
         android:color="@color/radio_button_selected_color" />
