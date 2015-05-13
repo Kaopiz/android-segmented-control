@@ -23,10 +23,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
-                segmentedgroup:border_width="1dp"
-                segmentedgroup:corner_radius="10dp"
-                segmentedgroup:tint_color="#FFEB3B"
-                segmentedgroup:checked_text_color="#7C4DFF">
+                segmentedgroup:sc_border_width="1dp"
+                segmentedgroup:sc_corner_radius="10dp"
+                segmentedgroup:sc_tint_color="#FFEB3B"
+                segmentedgroup:sc_checked_text_color="#7C4DFF">
 
                 <RadioButton
                     android:id="@+id/button21"
@@ -60,9 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
-                segmentedgroup:border_width="1dp"
-                segmentedgroup:corner_radius="5dp"
-                segmentedgroup:tint_color="#009688">
+                segmentedgroup:sc_border_width="1dp"
+                segmentedgroup:sc_corner_radius="5dp"
+                segmentedgroup:sc_tint_color="#009688">
 
                 <RadioButton
                     android:id="@+id/button31"
@@ -107,9 +107,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:orientation="vertical"
-                    segmentedgroup:tint_color="#727272"
-                    segmentedgroup:border_width="1dp"
-                    segmentedgroup:corner_radius="10dp">
+                    segmentedgroup:sc_tint_color="#727272"
+                    segmentedgroup:sc_border_width="1dp"
+                    segmentedgroup:sc_corner_radius="10dp">
 
                     <RadioButton
                         android:layout_width="match_parent"
@@ -141,9 +141,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:orientation="vertical"
-                    segmentedgroup:tint_color="#ff33b5e5"
-                    segmentedgroup:border_width="5dp"
-                    segmentedgroup:corner_radius="7dp">
+                    segmentedgroup:sc_tint_color="#ff33b5e5"
+                    segmentedgroup:sc_border_width="5dp"
+                    segmentedgroup:sc_corner_radius="7dp">
 
                     <RadioButton
                         android:layout_width="match_parent"
@@ -185,8 +185,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:orientation="horizontal"
-                    segmentedgroup:tint_color="@android:color/white"
-                    segmentedgroup:checked_text_color="#ff33b5e5">
+                    segmentedgroup:sc_tint_color="@android:color/white"
+                    segmentedgroup:sc_checked_text_color="#ff33b5e5">
 
                 </info.hoang8f.android.segmented.SegmentedGroup>
             </RelativeLayout>
