@@ -28,6 +28,12 @@ Usage
 -----
 Define in xml like this and make sure that the `RadioButton`'s style is: `@style/RadioButton`
 
+        <attr name="sc_corner_radius" format="dimension" />
+        <attr name="sc_border_width" format="dimension" />
+        <attr name="sc_tint_color" format="color" />
+        <attr name="sc_checked_text_color" format="color" />
+
+Sample code:
 ```xml
 
 <info.hoang8f.android.segmented.SegmentedGroup
