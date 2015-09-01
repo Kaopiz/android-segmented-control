@@ -37,8 +37,8 @@ Define in xml like this and make sure that the `RadioButton`'s style is: `@style
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:orientation="horizontal"
-    segmentedgroup:border_width="2dp"
-    segmentedgroup:corner_radius="10dp">
+    segmentedgroup:sc_border_width="2dp"
+    segmentedgroup:sc_corner_radius="10dp">
 
     <RadioButton
         android:id="@+id/button21"
@@ -100,6 +100,4 @@ License
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-
-
 
