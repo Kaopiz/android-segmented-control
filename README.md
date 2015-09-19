@@ -8,11 +8,11 @@ This implementation is inspired by [Segmented Controls](https://developer.apple.
 
 ##Including in your project
 
-####Using maven    ![jCenter](https://api.bintray.com/packages/hoang8f/maven/info.hoang8f%3Aandroid-segmented/images/download.svg)
-Android-Segmented Library is pushed to [Maven Central](https://bintray.com/hoang8f/maven/info.hoang8f%3Aandroid-segmented/view), so you just need to add the following dependency to your `build.gradle`.
+####Using maven
+Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22android-segmented%22), so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'info.hoang8f:android-segmented:1.0.5'
+        compile 'info.hoang8f:android-segmented:1.0.6'
     }
 
 ####Manually
