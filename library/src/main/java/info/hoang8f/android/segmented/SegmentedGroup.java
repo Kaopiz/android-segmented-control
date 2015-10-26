@@ -85,14 +85,38 @@ public class SegmentedGroup extends RadioGroup {
         updateBackground();
     }
 
+    private int getLastVisibleIndex() {
+        for (int i = getChildCount() - 1; i >= 0; i--) {
+            if (getChildAt(i).getVisibility() == VISIBLE) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private int getFirstVisibleIndex() {
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            if (getChildAt(i).getVisibility() == VISIBLE) {
+                return i;
+            }
+        }
+        return count - 1;
+    }
+
     public void updateBackground() {
         int count = super.getChildCount();
+        int lastVisible = getLastVisibleIndex();
+
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
-            updateBackground(child);
+            if (child.getVisibility() == VISIBLE) {
+                updateBackground(child);
+            }
 
             // If this is the last view, don't set LayoutParams
-            if (i == count - 1) break;
+            if (i == lastVisible)
+                break;
 
             LayoutParams initParams = (LayoutParams) child.getLayoutParams();
             LayoutParams params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
@@ -195,9 +219,9 @@ public class SegmentedGroup extends RadioGroup {
             // if there is only one child provide the default radio button
             if (children == 1) {
                 radii = rDefault;
-            } else if (child == 0) { //left or top
+            } else if (child == getFirstVisibleIndex()) { //left or top
                 radii = (getOrientation() == LinearLayout.HORIZONTAL) ? rLeft : rTop;
-            } else if (child == children - 1) {  //right or bottom
+            } else if (child == getLastVisibleIndex()) {  //right or bottom
                 radii = (getOrientation() == LinearLayout.HORIZONTAL) ? rRight : rBot;
             } else {  //middle
                 radii = rMiddle;
