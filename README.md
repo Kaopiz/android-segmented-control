@@ -6,7 +6,7 @@ This implementation is inspired by [Segmented Controls](https://developer.apple.
 
 ![Sample Image](https://raw.githubusercontent.com/hoang8f/android-segmented-control/master/screenshot/screenshot3.png)
 
-##Including in your project
+##Including in your project:
 
 ####Using maven
 Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22android-segmented%22), so you just need to add the following dependency to your `build.gradle`.
