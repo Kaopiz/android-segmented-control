@@ -2,6 +2,6 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:color="#DDd4d4d4" />
-    <item android:state_pressed="false" android:state_checked="false" android:color="@color/radio_button_selected_color" />
+    <item android:state_pressed="false" android:state_checked="false" android:color="@color/radio_button_text_color" />
     <item android:state_pressed="false" android:state_checked="true" android:color="#fff2f2f2" />
 </selector>
