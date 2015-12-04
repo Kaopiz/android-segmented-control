@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
@@ -21,7 +21,7 @@ public class SegmentedGroup extends RadioGroup {
     private int mMarginDp;
     private Resources resources;
     private int mTintColor;
-    private int mCheckedTextColor = Color.WHITE;
+    private ColorStateList mBorderColor;
     private LayoutSelector mLayoutSelector;
     private Float mCornerRadius;
 
@@ -46,18 +46,13 @@ public class SegmentedGroup extends RadioGroup {
                     R.styleable.SegmentedGroup_sc_border_width,
                     getResources().getDimension(R.dimen.radio_button_stroke_border));
 
-            mCornerRadius = typedArray.getDimension(
-                    R.styleable.SegmentedGroup_sc_corner_radius,
-                    getResources().getDimension(R.dimen.radio_button_conner_radius));
+            mCornerRadius = typedArray.getDimension(R.styleable.SegmentedGroup_sc_corner_radius,
+                                                           getResources().getDimension(R.dimen.radio_button_conner_radius));
 
-            mTintColor = typedArray.getColor(
-                    R.styleable.SegmentedGroup_sc_tint_color,
-                    getResources().getColor(R.color.radio_button_selected_color));
+            mTintColor = typedArray.getColor(R.styleable.SegmentedGroup_sc_tint_color,
+                                                    getResources().getColor(R.color.radio_button_selected_color));
 
-            mCheckedTextColor = typedArray.getColor(
-                    R.styleable.SegmentedGroup_sc_checked_text_color,
-                    getResources().getColor(android.R.color.white));
-
+            mBorderColor = typedArray.getColorStateList(R.styleable.SegmentedGroup_sc_border_color);
         } finally {
             typedArray.recycle();
         }
@@ -85,23 +80,45 @@ public class SegmentedGroup extends RadioGroup {
         updateBackground();
     }
 
-    public void setTintColor(int tintColor, int checkedTextColor) {
-        mTintColor = tintColor;
-        mCheckedTextColor = checkedTextColor;
+    public void setBorderColor(ColorStateList color) {
+        mBorderColor = color;
         updateBackground();
+    }
+
+    private int getLastVisibleIndex() {
+        for (int i = getChildCount() - 1; i >= 0; i--) {
+            if (getChildAt(i).getVisibility() == VISIBLE) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private int getFirstVisibleIndex() {
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            if (getChildAt(i).getVisibility() == VISIBLE) {
+                return i;
+            }
+        }
+        return count - 1;
     }
 
     public void updateBackground() {
         int count = super.getChildCount();
+        int lastVisible = getLastVisibleIndex();
+
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
-            updateBackground(child);
+            if (child.getVisibility() == VISIBLE) {
+                updateBackground(child);
+            }
 
             // If this is the last view, don't set LayoutParams
-            if (i == count - 1) break;
+            if (i == lastVisible)
+                break;
 
-            LayoutParams initParams = (LayoutParams) child.getLayoutParams();
-            LayoutParams params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
+            LayoutParams params = (LayoutParams) child.getLayoutParams();
             // Check orientation for proper margins
             if (getOrientation() == LinearLayout.HORIZONTAL) {
                 params.setMargins(0, 0, -mMarginDp, 0);
@@ -109,26 +126,24 @@ public class SegmentedGroup extends RadioGroup {
                 params.setMargins(0, 0, 0, -mMarginDp);
             }
             child.setLayoutParams(params);
+            child.requestLayout();
         }
     }
 
     private void updateBackground(View view) {
         int checked = mLayoutSelector.getSelected();
         int unchecked = mLayoutSelector.getUnselected();
-        //Set text color
-        ColorStateList colorStateList = new ColorStateList(new int[][]{
-                {android.R.attr.state_pressed},
-                {-android.R.attr.state_pressed, -android.R.attr.state_checked},
-                {-android.R.attr.state_pressed, android.R.attr.state_checked}},
-                new int[]{Color.GRAY, mTintColor, mCheckedTextColor});
-        ((Button) view).setTextColor(colorStateList);
-
         //Redraw with tint color
         Drawable checkedDrawable = resources.getDrawable(checked).mutate();
         Drawable uncheckedDrawable = resources.getDrawable(unchecked).mutate();
         ((GradientDrawable) checkedDrawable).setColor(mTintColor);
-        ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mTintColor);
-        ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mTintColor);
+        if (null != mBorderColor && VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+            ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mBorderColor);
+            ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mBorderColor);
+        } else {
+            ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mTintColor);
+            ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mTintColor);
+        }
         //Set proper radius
         ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
         ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
@@ -204,9 +219,9 @@ public class SegmentedGroup extends RadioGroup {
             // if there is only one child provide the default radio button
             if (children == 1) {
                 radii = rDefault;
-            } else if (child == 0) { //left or top
+            } else if (child == getFirstVisibleIndex()) { //left or top
                 radii = (getOrientation() == LinearLayout.HORIZONTAL) ? rLeft : rTop;
-            } else if (child == children - 1) {  //right or bottom
+            } else if (child == getLastVisibleIndex()) {  //right or bottom
                 radii = (getOrientation() == LinearLayout.HORIZONTAL) ? rRight : rBot;
             } else {  //middle
                 radii = rMiddle;
