@@ -22,6 +22,7 @@ public class SegmentedGroup extends RadioGroup {
     private int mMarginDp;
     private Resources resources;
     private int mTintColor;
+    private int mUnCheckedTintColor;
     private int mCheckedTextColor = Color.WHITE;
     private LayoutSelector mLayoutSelector;
     private Float mCornerRadius;
@@ -32,6 +33,7 @@ public class SegmentedGroup extends RadioGroup {
         super(context);
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
+        mUnCheckedTintColor = resources.getColor(R.color.radio_button_unselected_color);
         mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
         mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius);
         mLayoutSelector = new LayoutSelector(mCornerRadius);
@@ -41,6 +43,7 @@ public class SegmentedGroup extends RadioGroup {
         super(context, attrs);
         resources = getResources();
         mTintColor = resources.getColor(R.color.radio_button_selected_color);
+        mUnCheckedTintColor = resources.getColor(R.color.radio_button_unselected_color);
         mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
         mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius);
         initAttrs(attrs);
@@ -71,6 +74,9 @@ public class SegmentedGroup extends RadioGroup {
                     R.styleable.SegmentedGroup_sc_checked_text_color,
                     getResources().getColor(android.R.color.white));
 
+            mUnCheckedTintColor = typedArray.getColor(
+                    R.styleable.SegmentedGroup_sc_unchecked_tint_color,
+                    getResources().getColor(R.color.radio_button_unselected_color));
         } finally {
             typedArray.recycle();
         }
@@ -91,6 +97,11 @@ public class SegmentedGroup extends RadioGroup {
     public void setTintColor(int tintColor, int checkedTextColor) {
         mTintColor = tintColor;
         mCheckedTextColor = checkedTextColor;
+        updateBackground();
+    }
+
+    public void setUnCheckedTintColor(int unCheckedTintColor, int unCheckedTextColor) {
+        mUnCheckedTintColor = unCheckedTintColor;
         updateBackground();
     }
 
@@ -132,6 +143,7 @@ public class SegmentedGroup extends RadioGroup {
         ((GradientDrawable) checkedDrawable).setColor(mTintColor);
         ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mTintColor);
         ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mTintColor);
+        ((GradientDrawable) uncheckedDrawable).setColor(mUnCheckedTintColor);
         //Set proper radius
         ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
         ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
