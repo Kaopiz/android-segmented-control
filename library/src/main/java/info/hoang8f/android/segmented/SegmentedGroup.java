@@ -34,6 +34,16 @@ public class SegmentedGroup extends RadioGroup {
         mLayoutSelector = new LayoutSelector(mCornerRadius);
     }
 
+    public SegmentedGroup(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        resources = getResources();
+        mTintColor = resources.getColor(R.color.radio_button_selected_color);
+        mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
+        mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius);
+        initAttrs(attrs);
+        mLayoutSelector = new LayoutSelector(mCornerRadius);
+    }
+
     /* Reads the attributes from the layout */
     private void initAttrs(AttributeSet attrs) {
         TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(
@@ -61,16 +71,6 @@ public class SegmentedGroup extends RadioGroup {
         } finally {
             typedArray.recycle();
         }
-    }
-
-    public SegmentedGroup(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        resources = getResources();
-        mTintColor = resources.getColor(R.color.radio_button_selected_color);
-        mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
-        mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius);
-        initAttrs(attrs);
-        mLayoutSelector = new LayoutSelector(mCornerRadius);
     }
 
     @Override
