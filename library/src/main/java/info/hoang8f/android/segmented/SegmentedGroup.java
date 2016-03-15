@@ -148,7 +148,7 @@ public class SegmentedGroup extends RadioGroup {
         ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
         ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
 
-        Drawable[] drawables = {checkedDrawable, uncheckedDrawable};
+        Drawable[] drawables = {uncheckedDrawable, checkedDrawable};
         TransitionDrawable transitionDrawable = new TransitionDrawable(drawables);
         //Set button background
         if (Build.VERSION.SDK_INT >= 16) {
