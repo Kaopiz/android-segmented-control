@@ -7,13 +7,14 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class SegmentedGroup extends RadioGroup {
@@ -24,6 +25,8 @@ public class SegmentedGroup extends RadioGroup {
     private int mCheckedTextColor = Color.WHITE;
     private LayoutSelector mLayoutSelector;
     private Float mCornerRadius;
+    private int mLastCheckId;
+    private OnCheckedChangeListener mCheckedChangeListener;
 
     public SegmentedGroup(Context context) {
         super(context);
@@ -133,26 +136,48 @@ public class SegmentedGroup extends RadioGroup {
         ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
         ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
 
-        //Create drawable
-        StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(new int[]{-android.R.attr.state_checked}, uncheckedDrawable);
-        stateListDrawable.addState(new int[]{android.R.attr.state_checked}, checkedDrawable);
-
+        Drawable[] drawables = {checkedDrawable, uncheckedDrawable};
+        TransitionDrawable transitionDrawable = new TransitionDrawable(drawables);
         //Set button background
         if (Build.VERSION.SDK_INT >= 16) {
-            view.setBackground(stateListDrawable);
+            view.setBackground(transitionDrawable);
         } else {
-            view.setBackgroundDrawable(stateListDrawable);
+            view.setBackgroundDrawable(transitionDrawable);
         }
+
+        super.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton button = (RadioButton) group.findViewById(checkedId);
+                TransitionDrawable drawable = (TransitionDrawable) button.getBackground();
+                drawable.reverseTransition(200);
+
+                if (mLastCheckId != 0) {
+                    RadioButton button2 = (RadioButton) group.findViewById(mLastCheckId);
+                    TransitionDrawable drawable2 = (TransitionDrawable) button2.getBackground();
+                    drawable2.reverseTransition(200);
+                }
+                mLastCheckId = checkedId;
+
+                if (mCheckedChangeListener != null) {
+                    mCheckedChangeListener.onCheckedChanged(group, checkedId);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        mCheckedChangeListener = listener;
     }
 
     /*
-     * This class is used to provide the proper layout based on the view.
-     * Also provides the proper radius for corners.
-     * The layout is the same for each selected left/top middle or right/bottom button.
-     * float tables for setting the radius via Gradient.setCornerRadii are used instead
-     * of multiple xml drawables.
-     */
+         * This class is used to provide the proper layout based on the view.
+         * Also provides the proper radius for corners.
+         * The layout is the same for each selected left/top middle or right/bottom button.
+         * float tables for setting the radius via Gradient.setCornerRadii are used instead
+         * of multiple xml drawables.
+         */
     private class LayoutSelector {
 
         private int children;
