@@ -72,19 +72,19 @@ public class SampleActivity extends AppCompatActivity {
             switch (checkedId) {
                 case R.id.button21:
                     Toast.makeText(getActivity(), "One", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button22:
                     Toast.makeText(getActivity(), "Two", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button31:
                     Toast.makeText(getActivity(), "One", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button32:
                     Toast.makeText(getActivity(), "Two", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button33:
                     Toast.makeText(getActivity(), "Three", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 default:
                     // Nothing to do
             }
@@ -95,10 +95,10 @@ public class SampleActivity extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.add_segmented:
                     addButton(segmented5);
-                    return;
+                    break;
                 case R.id.remove_segmented:
                     removeButton(segmented5);
-                    return;
+                    break;
                 default:
                     // Nothing to do
             }
