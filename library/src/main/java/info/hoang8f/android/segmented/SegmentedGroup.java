@@ -7,14 +7,19 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.StateSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+
+import java.util.HashMap;
 
 public class SegmentedGroup extends RadioGroup {
 
@@ -25,6 +30,9 @@ public class SegmentedGroup extends RadioGroup {
     private int mCheckedTextColor = Color.WHITE;
     private LayoutSelector mLayoutSelector;
     private Float mCornerRadius;
+    private OnCheckedChangeListener mCheckedChangeListener;
+    private HashMap<Integer, TransitionDrawable> mDrawableMap;
+    private int mLastCheckId;
 
     public SegmentedGroup(Context context) {
         super(context);
@@ -103,6 +111,7 @@ public class SegmentedGroup extends RadioGroup {
     }
 
     public void updateBackground() {
+        mDrawableMap = new HashMap<>();
         int count = super.getChildCount();
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
@@ -128,10 +137,9 @@ public class SegmentedGroup extends RadioGroup {
         int unchecked = mLayoutSelector.getUnselected();
         //Set text color
         ColorStateList colorStateList = new ColorStateList(new int[][]{
-                {android.R.attr.state_pressed},
-                {-android.R.attr.state_pressed, -android.R.attr.state_checked},
-                {-android.R.attr.state_pressed, android.R.attr.state_checked}},
-                new int[]{Color.GRAY, mTintColor, mCheckedTextColor});
+                {-android.R.attr.state_checked},
+                {android.R.attr.state_checked}},
+                new int[]{mTintColor, mCheckedTextColor});
         ((Button) view).setTextColor(colorStateList);
 
         //Redraw with tint color
@@ -145,10 +153,22 @@ public class SegmentedGroup extends RadioGroup {
         ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
         ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
 
-        //Create drawable
+        GradientDrawable maskDrawable = (GradientDrawable) resources.getDrawable(unchecked).mutate();
+        maskDrawable.setStroke(mMarginDp, mTintColor);
+        maskDrawable.setColor(mUnCheckedTintColor);
+        maskDrawable.setCornerRadii(mLayoutSelector.getChildRadii(view));
+        int maskColor = Color.argb(50, Color.red(mTintColor), Color.green(mTintColor), Color.blue(mTintColor));
+        maskDrawable.setColor(maskColor);
+        LayerDrawable pressedDrawable = new LayerDrawable(new Drawable[] {uncheckedDrawable, maskDrawable});
+
+        Drawable[] drawables = {uncheckedDrawable, checkedDrawable};
+        TransitionDrawable transitionDrawable = new TransitionDrawable(drawables);
+
         StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(new int[]{-android.R.attr.state_checked}, uncheckedDrawable);
-        stateListDrawable.addState(new int[]{android.R.attr.state_checked}, checkedDrawable);
+        stateListDrawable.addState(new int[] {-android.R.attr.state_checked, android.R.attr.state_pressed}, pressedDrawable);
+        stateListDrawable.addState(StateSet.WILD_CARD, transitionDrawable);
+
+        mDrawableMap.put(view.getId(), transitionDrawable);
 
         //Set button background
         if (Build.VERSION.SDK_INT >= 16) {
@@ -156,15 +176,37 @@ public class SegmentedGroup extends RadioGroup {
         } else {
             view.setBackgroundDrawable(stateListDrawable);
         }
+
+        super.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                TransitionDrawable current = mDrawableMap.get(checkedId);
+                current.reverseTransition(200);
+                if (mLastCheckId != 0) {
+                    TransitionDrawable last = mDrawableMap.get(mLastCheckId);
+                    last.reverseTransition(200);
+                }
+                mLastCheckId = checkedId;
+
+                if (mCheckedChangeListener != null) {
+                    mCheckedChangeListener.onCheckedChanged(group, checkedId);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        mCheckedChangeListener = listener;
     }
 
     /*
-     * This class is used to provide the proper layout based on the view.
-     * Also provides the proper radius for corners.
-     * The layout is the same for each selected left/top middle or right/bottom button.
-     * float tables for setting the radius via Gradient.setCornerRadii are used instead
-     * of multiple xml drawables.
-     */
+         * This class is used to provide the proper layout based on the view.
+         * Also provides the proper radius for corners.
+         * The layout is the same for each selected left/top middle or right/bottom button.
+         * float tables for setting the radius via Gradient.setCornerRadii are used instead
+         * of multiple xml drawables.
+         */
     private class LayoutSelector {
 
         private int children;

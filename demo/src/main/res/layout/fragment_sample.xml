@@ -26,6 +26,7 @@
                 segmentedgroup:sc_border_width="1dp"
                 segmentedgroup:sc_corner_radius="10dp"
                 segmentedgroup:sc_tint_color="#FFEB3B"
+                segmentedgroup:sc_unchecked_tint_color="#ff0000"
                 segmentedgroup:sc_checked_text_color="#7C4DFF">
 
                 <RadioButton
@@ -51,7 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="80dp"
-            android:background="#455A64"
             android:gravity="center">
 
             <info.hoang8f.android.segmented.SegmentedGroup
