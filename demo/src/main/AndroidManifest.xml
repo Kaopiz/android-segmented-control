@@ -3,6 +3,7 @@
     package="info.hoang8f.mymo.segmented.demo">
 
     <application
+        android:name=".SampleApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"

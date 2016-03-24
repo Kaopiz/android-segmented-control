@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import info.hoang8f.android.segmented.AwesomeRadioButton;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class SampleActivity extends ActionBarActivity {
@@ -63,6 +64,9 @@ public class SampleActivity extends ActionBarActivity {
 //            segmented3.setOnCheckedChangeListener(this);
             segmented5.setOnCheckedChangeListener(this);
 
+            // Support awesome font
+            AwesomeRadioButton button = (AwesomeRadioButton) rootView.findViewById(R.id.button42);
+            button.setMarkdownText("{fa_facebook} facebook");
             return rootView;
         }
 

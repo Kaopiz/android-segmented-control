@@ -7,4 +7,7 @@
         <attr name="sc_checked_text_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="AwesomeRadioButton">
+        <attr name="awesome_text" format="string"/>
+    </declare-styleable>
 </resources>
