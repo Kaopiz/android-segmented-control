@@ -3,6 +3,7 @@ package info.hoang8f.mymo.segmented.demo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import info.hoang8f.android.segmented.AwesomeRadioButton;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
-public class SampleActivity extends ActionBarActivity {
+public class SampleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,19 +76,19 @@ public class SampleActivity extends ActionBarActivity {
             switch (checkedId) {
                 case R.id.button21:
                     Toast.makeText(getActivity(), "One", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button22:
                     Toast.makeText(getActivity(), "Two", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button31:
                     Toast.makeText(getActivity(), "One", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button32:
                     Toast.makeText(getActivity(), "Two", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 case R.id.button33:
                     Toast.makeText(getActivity(), "Three", Toast.LENGTH_SHORT).show();
-                    return;
+                    break;
                 default:
                     // Nothing to do
             }
@@ -98,10 +99,10 @@ public class SampleActivity extends ActionBarActivity {
             switch (v.getId()) {
                 case R.id.add_segmented:
                     addButton(segmented5);
-                    return;
+                    break;
                 case R.id.remove_segmented:
                     removeButton(segmented5);
-                    return;
+                    break;
                 default:
                     // Nothing to do
             }
