@@ -17,6 +17,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.HashMap;
@@ -163,6 +164,9 @@ public class SegmentedGroup extends RadioGroup {
 
         Drawable[] drawables = {uncheckedDrawable, checkedDrawable};
         TransitionDrawable transitionDrawable = new TransitionDrawable(drawables);
+        if (((RadioButton) view).isChecked()) {
+            transitionDrawable.reverseTransition(0);
+        }
 
         StateListDrawable stateListDrawable = new StateListDrawable();
         stateListDrawable.addState(new int[] {-android.R.attr.state_checked, android.R.attr.state_pressed}, pressedDrawable);
@@ -184,7 +188,7 @@ public class SegmentedGroup extends RadioGroup {
                 current.reverseTransition(200);
                 if (mLastCheckId != 0) {
                     TransitionDrawable last = mDrawableMap.get(mLastCheckId);
-                    last.reverseTransition(200);
+                    if (last != null) last.reverseTransition(200);
                 }
                 mLastCheckId = checkedId;
 
@@ -193,6 +197,12 @@ public class SegmentedGroup extends RadioGroup {
                 }
             }
         });
+    }
+
+    @Override
+    public void onViewRemoved(View child) {
+        super.onViewRemoved(child);
+        mDrawableMap.remove(child.getId());
     }
 
     @Override
