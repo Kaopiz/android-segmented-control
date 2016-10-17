@@ -9,7 +9,8 @@ This implementation is inspired by [Segmented Controls](https://developer.apple.
 ##Including in your project:
 
 ####Download source code and import as module
-The latest code has bug fixes and iOS 7's (and up) style segment control (which has nice fade animation and tint). This feature has not been pushed to Maven yet.
+The latest code has bug fixes, iOS 7's (and up) style segment control (which has nice fade animation and tint) and support for Font Awesome.
+(These features has not been pushed to Maven yet)
 
 ####Using maven
 Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22android-segmented%22), so you just need to add the following dependency to your `build.gradle`.
