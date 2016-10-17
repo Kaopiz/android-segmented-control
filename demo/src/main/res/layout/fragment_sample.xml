@@ -63,6 +63,9 @@
                 android:orientation="horizontal"
                 segmentedgroup:sc_border_width="1dp"
                 segmentedgroup:sc_corner_radius="5dp"
+                segmentedgroup:sc_border_color="#333333"
+                segmentedgroup:sc_unchecked_text_color="#333333"
+                segmentedgroup:sc_animate_delay="1000"
                 segmentedgroup:sc_tint_color="#009688">
 
                 <RadioButton
@@ -231,7 +234,8 @@
                     android:layout_margin="10dp"
                     android:orientation="horizontal"
                     segmentedgroup:sc_tint_color="@android:color/white"
-                    segmentedgroup:sc_checked_text_color="#ff33b5e5">
+                    segmentedgroup:sc_checked_text_color="#000000"
+                    segmentedgroup:sc_unchecked_text_color="#ffffff">
 
                 </info.hoang8f.android.segmented.SegmentedGroup>
             </RelativeLayout>
