@@ -78,7 +78,7 @@
                     android:id="@+id/button32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Twoыааыаыаыы"
+                    android:text="Two"
                     style="@style/RadioButton" />
 
                 <RadioButton
