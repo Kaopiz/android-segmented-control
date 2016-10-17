@@ -65,6 +65,7 @@
                 segmentedgroup:sc_corner_radius="5dp"
                 segmentedgroup:sc_border_color="#333333"
                 segmentedgroup:sc_unchecked_text_color="#333333"
+                segmentedgroup:sc_animate_delay="1000"
                 segmentedgroup:sc_tint_color="#009688">
 
                 <RadioButton

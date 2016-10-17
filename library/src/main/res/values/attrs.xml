@@ -8,7 +8,7 @@
         <attr name="sc_checked_text_color" format="color" />
         <attr name="sc_unchecked_text_color" format="color" />
         <attr name="sc_unchecked_tint_color" format="color"/>
-
+        <attr name="sc_animate_delay" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="AwesomeRadioButton">

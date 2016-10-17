@@ -32,6 +32,7 @@ public class SegmentedGroup extends RadioGroup {
     private int mUnCheckedTintColor;
     private int mCheckedTextColor = Color.WHITE;
     private int mUncheckedTextColor;
+    private int mAnimateDelay;
     private LayoutSelector mLayoutSelector;
     private Float mCornerRadius;
     private OnCheckedChangeListener mCheckedChangeListener;
@@ -94,6 +95,11 @@ public class SegmentedGroup extends RadioGroup {
             mUnCheckedTintColor = typedArray.getColor(
                     R.styleable.SegmentedGroup_sc_unchecked_tint_color,
                     getResources().getColor(R.color.radio_button_unselected_color));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mAnimateDelay = typedArray.getInt(R.styleable.SegmentedGroup_sc_animate_delay, 400);
+            }else {
+                mAnimateDelay = 0;
+            }
         } finally {
             typedArray.recycle();
         }
@@ -207,10 +213,10 @@ public class SegmentedGroup extends RadioGroup {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 TransitionDrawable current = mDrawableMap.get(checkedId);
-                current.reverseTransition(400);
+                current.reverseTransition(mAnimateDelay);
                 if (mLastCheckId != 0) {
                     TransitionDrawable last = mDrawableMap.get(mLastCheckId);
-                    if (last != null) last.reverseTransition(400);
+                    if (last != null) last.reverseTransition(mAnimateDelay);
                 }
                 mLastCheckId = checkedId;
 
