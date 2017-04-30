@@ -6,20 +6,20 @@ This implementation is inspired by [Segmented Controls](https://developer.apple.
 
 ![Sample Image](https://raw.githubusercontent.com/hoang8f/android-segmented-control/master/screenshot/screenshot3.png)
 
-##Including in your project:
+## Including in your project:
 
-####Download source code and import as module
+#### Download source code and import as module
 The latest code has bug fixes, iOS 7's (and up) style segment control (which has nice fade animation and tint) and support for Font Awesome.
 (These features has not been pushed to Maven yet)
 
-####Using maven
+#### Using maven
 Android-Segmented Library is pushed to [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22android-segmented%22), so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
         compile 'info.hoang8f:android-segmented:1.0.6'
     }
 
-####Manually
+#### Manually
 Copy(or merge) below files into corresponding file/folder:
   + SegmentedGroup.java
   + res/drawable/*
