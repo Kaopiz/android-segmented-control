@@ -3,6 +3,7 @@
     <declare-styleable name="SegmentedGroup">
         <attr name="sc_corner_radius" format="dimension" />
         <attr name="sc_border_width" format="dimension" />
+        <attr name="sc_button_padding" format="dimension" />
         <attr name="sc_tint_color" format="color" />
         <attr name="sc_checked_text_color" format="color" />
         <attr name="sc_unchecked_tint_color" format="color"/>
