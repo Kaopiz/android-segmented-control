@@ -121,15 +121,14 @@ public class SegmentedGroup extends RadioGroup {
             // If this is the last view, don't set LayoutParams
             if (i == count - 1) break;
 
-            LayoutParams initParams = (LayoutParams) child.getLayoutParams();
-            LayoutParams params = new LayoutParams(initParams.width, initParams.height, initParams.weight);
+            LayoutParams params = (LayoutParams) child.getLayoutParams();
             // Check orientation for proper margins
             if (getOrientation() == LinearLayout.HORIZONTAL) {
                 params.setMargins(0, 0, -mMarginDp, 0);
             } else {
                 params.setMargins(0, 0, 0, -mMarginDp);
             }
-            child.setLayoutParams(params);
+            child.requestLayout();
         }
     }
 
