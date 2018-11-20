@@ -34,6 +34,7 @@ Define in xml like this and make sure that the `RadioButton`'s style is: `@style
 ```xml
 <attr name="sc_corner_radius" format="dimension" />
 <attr name="sc_border_width" format="dimension" />
+<attr name="sc_button_padding" format="dimension" />
 <attr name="sc_tint_color" format="color" />
 <attr name="sc_checked_text_color" format="color" />
 ```
@@ -49,7 +50,8 @@ Sample code:
     android:layout_margin="10dp"
     android:orientation="horizontal"
     segmentedgroup:sc_border_width="2dp"
-    segmentedgroup:sc_corner_radius="10dp">
+    segmentedgroup:sc_corner_radius="10dp"
+    segmentedgroup:sc_button_padding="20dp">
 
     <RadioButton
         android:id="@+id/button21"
@@ -80,7 +82,7 @@ segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07
 SegmentedGroup segmented4 = (SegmentedGroup) rootView.findViewById(R.id.segmented4);
 segmented4.setTintColor(getResources().getColor(R.color.radio_button_selected_color));
 ```
-If you dont specify border_width and/or corner_radius the default values will be used (1dp for border_width and 5 dp for corner_radius)
+If you dont specify border_width, button_padding and/or corner_radius the default values will be used (1dp for border_width, 5dp for the button_padding and 5dp for corner_radius)
 
 Credits
 -------

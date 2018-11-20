@@ -31,6 +31,7 @@ public class SegmentedGroup extends RadioGroup {
     private int mCheckedTextColor = Color.WHITE;
     private LayoutSelector mLayoutSelector;
     private Float mCornerRadius;
+    private int mButtonPadding;
     private OnCheckedChangeListener mCheckedChangeListener;
     private HashMap<Integer, TransitionDrawable> mDrawableMap;
     private int mLastCheckId;
@@ -42,6 +43,7 @@ public class SegmentedGroup extends RadioGroup {
         mUnCheckedTintColor = resources.getColor(R.color.radio_button_unselected_color);
         mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
         mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius);
+        mButtonPadding = (int) getResources().getDimension(R.dimen.radio_button_button_padding);
         mLayoutSelector = new LayoutSelector(mCornerRadius);
     }
 
@@ -52,6 +54,7 @@ public class SegmentedGroup extends RadioGroup {
         mUnCheckedTintColor = resources.getColor(R.color.radio_button_unselected_color);
         mMarginDp = (int) getResources().getDimension(R.dimen.radio_button_stroke_border);
         mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius);
+        mButtonPadding = (int) getResources().getDimension(R.dimen.radio_button_button_padding);
         initAttrs(attrs);
         mLayoutSelector = new LayoutSelector(mCornerRadius);
     }
@@ -71,6 +74,10 @@ public class SegmentedGroup extends RadioGroup {
             mCornerRadius = typedArray.getDimension(
                     R.styleable.SegmentedGroup_sc_corner_radius,
                     getResources().getDimension(R.dimen.radio_button_conner_radius));
+
+            mButtonPadding = (int) typedArray.getDimension(
+                    R.styleable.SegmentedGroup_sc_button_padding,
+                    getResources().getDimension(R.dimen.radio_button_button_padding));
 
             mTintColor = typedArray.getColor(
                     R.styleable.SegmentedGroup_sc_tint_color,
@@ -97,6 +104,11 @@ public class SegmentedGroup extends RadioGroup {
 
     public void setTintColor(int tintColor) {
         mTintColor = tintColor;
+        updateBackground();
+    }
+
+    public void setButtonPadding(int buttonPadding) {
+        mButtonPadding = buttonPadding;
         updateBackground();
     }
 
@@ -153,7 +165,8 @@ public class SegmentedGroup extends RadioGroup {
         //Set proper radius
         ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
         ((GradientDrawable) uncheckedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));
-
+        //Set proper padding
+        ((Button) view).setPadding(mButtonPadding, mButtonPadding, mButtonPadding, mButtonPadding);
         GradientDrawable maskDrawable = (GradientDrawable) resources.getDrawable(unchecked).mutate();
         maskDrawable.setStroke(mMarginDp, mTintColor);
         maskDrawable.setColor(mUnCheckedTintColor);
