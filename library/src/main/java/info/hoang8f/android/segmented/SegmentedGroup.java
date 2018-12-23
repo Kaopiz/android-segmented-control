@@ -160,7 +160,7 @@ public class SegmentedGroup extends RadioGroup {
         maskDrawable.setCornerRadii(mLayoutSelector.getChildRadii(view));
         int maskColor = Color.argb(50, Color.red(mTintColor), Color.green(mTintColor), Color.blue(mTintColor));
         maskDrawable.setColor(maskColor);
-        LayerDrawable pressedDrawable = new LayerDrawable(new Drawable[] {uncheckedDrawable, maskDrawable});
+        LayerDrawable pressedDrawable = new LayerDrawable(new Drawable[]{uncheckedDrawable, maskDrawable});
 
         Drawable[] drawables = {uncheckedDrawable, checkedDrawable};
         TransitionDrawable transitionDrawable = new TransitionDrawable(drawables);
@@ -169,7 +169,7 @@ public class SegmentedGroup extends RadioGroup {
         }
 
         StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(new int[] {-android.R.attr.state_checked, android.R.attr.state_pressed}, pressedDrawable);
+        stateListDrawable.addState(new int[]{-android.R.attr.state_checked, android.R.attr.state_pressed}, pressedDrawable);
         stateListDrawable.addState(StateSet.WILD_CARD, transitionDrawable);
 
         mDrawableMap.put(view.getId(), transitionDrawable);
@@ -181,6 +181,10 @@ public class SegmentedGroup extends RadioGroup {
             view.setBackgroundDrawable(stateListDrawable);
         }
 
+        updateCheckedChangeListener();
+    }
+
+    private void updateCheckedChangeListener() {
         super.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

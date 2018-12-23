@@ -1,8 +1,8 @@
 package info.hoang8f.mymo.segmented.demo;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +34,10 @@ public class SampleActivity extends AppCompatActivity {
      */
     public static class PlaceholderFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
-        SegmentedGroup segmented5;
+        private Handler handler = new Handler();
+
+        private SegmentedGroup segmented5;
+
 
         public PlaceholderFragment() {
         }
@@ -44,10 +47,10 @@ public class SampleActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_sample, container, false);
 
-//            SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
+            SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
 //            segmented2.setTintColor(Color.DKGRAY);
 //
-//            SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
+            SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
 //            //Tint color, and text color when checked
 ////            segmented3.setTintColor(Color.parseColor("#FFD0FF3C"), Color.parseColor("#FF7B07B2"));
 //
@@ -61,8 +64,8 @@ public class SampleActivity extends AppCompatActivity {
             removeBtn.setOnClickListener(this);
 
             //Set change listener on SegmentedGroup
-//            segmented2.setOnCheckedChangeListener(this);
-//            segmented3.setOnCheckedChangeListener(this);
+            segmented2.setOnCheckedChangeListener(this);
+            segmented3.setOnCheckedChangeListener(this);
             segmented5.setOnCheckedChangeListener(this);
 
             // Support awesome font
@@ -73,25 +76,34 @@ public class SampleActivity extends AppCompatActivity {
 
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
+            final String message;
+
             switch (checkedId) {
                 case R.id.button21:
-                    Toast.makeText(getActivity(), "One", Toast.LENGTH_SHORT).show();
+                    message = "One!";
                     break;
                 case R.id.button22:
-                    Toast.makeText(getActivity(), "Two", Toast.LENGTH_SHORT).show();
+                    message = "Two!";
                     break;
                 case R.id.button31:
-                    Toast.makeText(getActivity(), "One", Toast.LENGTH_SHORT).show();
+                    message = "One!";
                     break;
                 case R.id.button32:
-                    Toast.makeText(getActivity(), "Two", Toast.LENGTH_SHORT).show();
+                    message = "Two!";
                     break;
                 case R.id.button33:
-                    Toast.makeText(getActivity(), "Three", Toast.LENGTH_SHORT).show();
+                    message = "Three!";
                     break;
                 default:
-                    // Nothing to do
+                    message = "Click!";
             }
+
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override
