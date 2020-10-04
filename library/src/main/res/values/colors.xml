@@ -2,4 +2,6 @@
 <resources>
     <color name="radio_button_selected_color">#ff33b5e5</color>
     <color name="radio_button_unselected_color">#e0e0e0</color>
+    <color name="radio_button_text_color">#000000</color>
+
 </resources>
