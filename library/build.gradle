@@ -22,6 +22,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-annotations:23.2.0'
 }
-
+apply plugin: 'com.github.dcendents.android-maven'
 // Used to push in maven
-apply from: '../maven_push.gradle'
+//apply from: '../maven_push.gradle'
+group='com.github.MuhammadTouseeq'
