@@ -61,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
+                segmentedgroup:sc_text_color="@color/radio_button_text_color"
                 segmentedgroup:sc_border_width="1dp"
                 segmentedgroup:sc_corner_radius="5dp"
                 segmentedgroup:sc_tint_color="#009688">
